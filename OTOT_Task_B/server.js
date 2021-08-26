@@ -1,13 +1,10 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
 const mongoose = require("mongoose");
 const { PORT, mongoUri } = require("./config");
+const express = require("express");
+const app = express();
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const taskRoutes = require("./routes/api/Tasks");
-
-app.use(cors());
-app.use(bodyParser.json());
 
 mongoose
   .connect(mongoUri, {
@@ -19,7 +16,11 @@ mongoose
   .then(() => console.log("mongodb connected"))
   .catch((err) => console.log(err));
 
+app.use(cors());
+app.use(express.json());
 app.use("/api/tasks", taskRoutes);
-app.get("/", (req, res) => res.send("hello world!"));
 
+app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+module.exports = app;

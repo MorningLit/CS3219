@@ -15,6 +15,6 @@ const TaskSchema = new Schema({
   },
 });
 
-const Task = model("taskItem", TaskSchema);
+const Task = model("task", TaskSchema);
 
 module.exports = Task;
