@@ -2,3 +2,5 @@ before_script: cd OTOT_Task_B
 language: node_js
 node_js:
   - lts/*
+before_install:
+  - npm ci
