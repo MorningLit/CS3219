@@ -6,7 +6,7 @@ before_install:
   - npm ci
 deploy:
   provider: lambda
-  function_name: "CS3219_TaskB_Test"
+  function_name: "CS3219_Task_B_Test"
   region: "us-east-1"
   role: "arn:aws:iam::194093003665:role/service-role/CS3219_TaskB_Test-role-am8hvjxy"
   runtime: "nodejs14.x"
