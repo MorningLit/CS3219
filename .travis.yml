@@ -8,6 +8,6 @@ deploy:
   provider: lambda
   function_name: "lambda-test"
   region: "us-east-1"
-  role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
+  role: "arn:aws:iam::194093003665:policy/service-role/AWSLambdaBasicExecutionRole-ff1d0995-0b67-4858-8db2-54fe32189971"
   runtime: "nodejs14.x"
   handler_name: "handler"
