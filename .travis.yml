@@ -2,8 +2,7 @@ language: node_js
 node_js:
   - lts/*
 before_install:
-  - cd OTOT_Task_B
-  - npm ci
+  - cd OTOT_Task_B/backend
 deploy:
   provider: lambda
   function_name: "lambda-test"

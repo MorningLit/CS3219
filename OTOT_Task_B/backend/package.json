@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js --ignore 'frontend/'",
-    "frontend": "npm run serve --prefix frontend",
+    "server": "nodemon server.js",
+    "frontend": "npm run serve --prefix ../frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "test": "mocha --timeout 10000 --exit"
   },
