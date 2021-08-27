@@ -8,6 +8,6 @@ deploy:
   provider: lambda
   function_name: "CS3219_Task_B_Test"
   region: "us-east-1"
-  role: "arn:aws:iam::194093003665:role/service-role/CS3219_TaskB_Test-role-am8hvjxy"
+  role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
   runtime: "nodejs14.x"
   handler_name: "handler"
