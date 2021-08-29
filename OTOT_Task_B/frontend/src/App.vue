@@ -1,26 +1,68 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <InputTask @createTask="createTask" />
+    <TaskList :tasks="tasks" @putTask="putTask" @deleteTask="deleteTask" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import TaskList from "./components/TaskList.vue";
+  import InputTask from "./components/InputTask.vue";
+  import axios from "axios";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  const ROUTE = "http://localhost:3000/api/tasks/";
+  export default {
+    name: "App",
+    components: {
+      TaskList,
+      InputTask,
+    },
+    data() {
+      return {
+        tasks: [],
+      };
+    },
+    mounted() {
+      axios
+        .get(ROUTE)
+        .then((res) => (this.tasks = res.data))
+        .catch((err) => console.log(err));
+    },
+    methods: {
+      createTask(newTask) {
+        axios
+          .post(ROUTE, newTask)
+          .then((res) => (this.tasks = [res.data, ...this.tasks]))
+          .catch((err) => console.log(err));
+      },
+      putTask(editedTask) {
+        axios
+          .put(ROUTE + editedTask._id, editedTask)
+          .then((res) => (this.tasks[editedTask.index] = res.data))
+          .catch((err) => console.log(err));
+      },
+      deleteTask(deletedTask) {
+        axios
+          .delete(ROUTE + deletedTask._id)
+          .then(() => {
+            this.tasks.splice(deletedTask.index, 1);
+          })
+          .catch((err) => console.log(err));
+      },
+    },
+  };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body {
+    margin: 0;
+    font-family: monospace;
+  }
+  #app {
+    width: 100%;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+  }
 </style>

@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const tasks = await Task.find();
     if (!tasks) throw new Error("No tasks found!");
     const sorted = tasks.sort((a, b) => {
-      return new Date(a.date).getTime() - new Date(b.date).getTime();
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
     res.status(200).json(sorted);
   } catch (err) {
