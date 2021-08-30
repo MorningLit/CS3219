@@ -1,0 +1,34 @@
+GET http://localhost:3000/users
+
+###
+
+// create user
+POST http://localhost:3000/users
+Content-Type: application/json 
+
+{
+    "name": "dabby",
+    "password": "passs"
+}
+
+###
+
+// authenticated
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "name": "dabby",
+    "password": "passs"
+}
+
+###
+
+// not authenticated
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "name": "dabby",
+    "password": "psss"
+}
