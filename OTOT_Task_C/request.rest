@@ -1,9 +1,30 @@
-GET http://localhost:3000/users
+// get post based on token authorization
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk0NDcsImV4cCI6MTYzMDQxOTQ2Mn0.1wXqwKuxRk1fVzkNyK7E4kw1RWE4i6aELBe89Q2ApKY
 
 ###
 
+// regenerate access token 
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk1MDd9.S44wFnod-79hPx2wf6EHKgqDqSROd7qDj2q_cMZHnVw"
+}
+
+###
+
+// delete refresh token
+DELETE http://localhost:4000/users/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk1MDd9.S44wFnod-79hPx2wf6EHKgqDqSROd7qDj2q_cMZHnVw"
+}
+
+###
 // create user
-POST http://localhost:3000/users
+POST http://localhost:4000/users
 Content-Type: application/json 
 
 {
@@ -14,7 +35,7 @@ Content-Type: application/json
 ###
 
 // authenticated
-POST http://localhost:3000/users/login
+POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
@@ -25,7 +46,7 @@ Content-Type: application/json
 ###
 
 // not authenticated
-POST http://localhost:3000/users/login
+POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
