@@ -4,9 +4,5 @@ node_js:
 before_install:
   - cd OTOT_Task_B/backend
 deploy:
-  provider: lambda
-  function_name: "lambda-test"
-  region: "us-east-1"
-  role: "arn:aws:iam::194093003665:role/CS3219_Lambda"
-  runtime: "nodejs14.x"
-  handler_name: "handler"
+  provider: heroku:git
+  edge: true
