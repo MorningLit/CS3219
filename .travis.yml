@@ -4,6 +4,7 @@ node_js:
 before_install:
   - cd OTOT_Task_B/backend
 before_deploy:
+  - cd ../../..
   - cd OTOT_Task_B/backend
 deploy:
   provider: heroku:git
