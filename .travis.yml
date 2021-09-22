@@ -3,6 +3,8 @@ node_js:
   - lts/*
 before_install:
   - cd OTOT_Task_B/backend
+before_deploy:
+  - cd OTOT_Task_B/backend
 deploy:
   provider: heroku:git
   app: cs3219taskb
