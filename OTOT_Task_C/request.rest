@@ -1,15 +1,15 @@
 // get post based on token authorization
 GET http://localhost:3000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk0NDcsImV4cCI6MTYzMDQxOTQ2Mn0.1wXqwKuxRk1fVzkNyK7E4kw1RWE4i6aELBe89Q2ApKY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzIyNzg2MjMsImV4cCI6MTYzMjI3OTUyM30.1tJ5qJp2ctLjCrF08EBi-lgNa0EgL3DN4GJp1X0rlf0
 
 ###
 
-// regenerate access token 
+// regenerate access token using refresh token 
 POST http://localhost:4000/token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk1MDd9.S44wFnod-79hPx2wf6EHKgqDqSROd7qDj2q_cMZHnVw"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYmlsbHkiLCJpYXQiOjE2MzIyNzg3MjV9.R_UbuvT3ei150yiyP_GKIqtvDHxRIs1cGlgrfHlTZDE"
 }
 
 ###
@@ -19,17 +19,18 @@ DELETE http://localhost:4000/users/logout
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGFiYnkiLCJpYXQiOjE2MzA0MTk1MDd9.S44wFnod-79hPx2wf6EHKgqDqSROd7qDj2q_cMZHnVw"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYmlsbHkiLCJpYXQiOjE2MzIyNzg3MjV9.R_UbuvT3ei150yiyP_GKIqtvDHxRIs1cGlgrfHlTZDE"
 }
 
 ###
+
 // create user
 POST http://localhost:4000/users
 Content-Type: application/json 
 
 {
-    "name": "dabby",
-    "password": "passs"
+    "name": "billy",
+    "password": "mypassword"
 }
 
 ###
@@ -39,8 +40,8 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    "name": "dabby",
-    "password": "passs"
+    "name": "billy",
+    "password": "mypassword"
 }
 
 ###
@@ -50,6 +51,39 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    "name": "dabby",
-    "password": "psss"
+    "name": "billy",
+    "password": "wrongpassword"
+}
+
+###
+
+// authenticated admin
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "12345"
+}
+
+###
+
+// guest example
+POST http://localhost:4000/users
+Content-Type: application/json 
+
+{
+    "name": "guest",
+    "password": "mypassword"
+}
+
+###
+
+// authenticated
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "name": "guest",
+    "password": "mypassword"
 }

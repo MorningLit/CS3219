@@ -6,10 +6,17 @@ const jwt = require("jsonwebtoken");
 
 app.use(express.json());
 const users = [];
+async function insertAdmin() {
+  const adminPassword = await bcrypt.hash("12345", 10);
+  const admin = { name: "admin", password: adminPassword };
+  users.push(admin);
+}
+insertAdmin();
 let refreshTokens = [];
 
 app.post("/users", async (req, res) => {
   try {
+    if (req.body.name === "admin") throw "Invalid name";
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = { name: req.body.name, password: hashedPassword };
     users.push(user);
@@ -57,7 +64,7 @@ app.delete("/users/logout", (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.SECRET_ACCESS_TOKEN, { expiresIn: "15s" });
+  return jwt.sign(user, process.env.SECRET_ACCESS_TOKEN, { expiresIn: "5m" });
 }
 
 app.listen(4000);
