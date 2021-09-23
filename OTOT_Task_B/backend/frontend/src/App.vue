@@ -10,7 +10,7 @@
   import InputTask from "./components/InputTask.vue";
   import axios from "axios";
 
-  const ROUTE = "http://localhost:3000/api/tasks/";
+  const ROUTE = "https://cs3219taskb.herokuapp.com/api/tasks"; // change to "http://localhost:3000" if want to test on local server
   export default {
     name: "App",
     components: {

@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - lts/*
+deploy:
+  provider: heroku:git
+  app: cs3219taskb
+  edge: true
